@@ -8,7 +8,7 @@ function App() {
     author: "",
     title: "",
     text: "",
-    checked: "publish"
+    checked: "to_public"
   });
 
 
@@ -22,20 +22,51 @@ function App() {
           <form>
             <div>
               <label htmlFor="author">Autore</label>
-              <input name="author" type="text" placeholder="Inserisci nome e cognome o il tuo nome d'arte"/>
+              <input 
+                name="author" 
+                type="text" 
+                value={formData.author}
+                onChange={(event) => setFormData({...formData, author: event.target.value})}
+                placeholder="Inserisci nome e cognome o il tuo nome d'arte"
+              />
             </div>
             <div>
               <label htmlFor="title">Titolo</label>
-              <input name="title" type="text" placeholder="Inserisci il titolo del post"/>
+              <input 
+                name="title" 
+                type="text" 
+                onChange={(event) => setFormData({...formData, title: event.target.value})}
+                placeholder="Inserisci il titolo del post"
+              />
             </div>
             <div>
               <label htmlFor="text">Testo</label>
-              <textarea name="text" id="text" placeholder="Inserisci il testo del post"></textarea>
+              <textarea 
+                name="text" 
+                id="text" 
+                value={formData.text}
+                onChange={(event) => setFormData({...formData, text: event.target.value})}
+                placeholder="Inserisci il testo del post"
+              />
             </div>
             <div>
-              <input type="radio" name="public" id="" />
+              <input 
+                type="radio" 
+                name="public" 
+                id="public" 
+                value="to_public"
+                checked={formData.checked === "to_public"}
+                onChange={(event) => setFormData({...formData, public: event.target.value})}
+                />
               <label htmlFor="public">Pubblico</label>
-              <input type="radio" name="draft" id="" />
+              <input 
+                type="radio" 
+                name="public" 
+                id="draft" 
+                value="to_draft"
+                checked={formData.checked === "to_draft"}
+                onChange={(event) => setFormData({...formData, public: event.target.value})}
+              />
               <label htmlFor="draft">Bozza</label>
               
             </div>
