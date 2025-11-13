@@ -8,12 +8,15 @@ function App() {
     author: "",
     title: "",
     text: "",
-    checked: "to_public"
+    public: false
   });
 
 
+
   return (
+
     <>
+    {console.log(formData)}
       <div className="container">
         <header>
           <h1 className="text-center pt-5">C'è POST per te!</h1>
@@ -50,24 +53,13 @@ function App() {
               />
             </div>
             <div>
+              <label htmlFor="public">Pubblica</label>
               <input 
-                type="radio" 
+                type="checkbox" 
                 name="public" 
-                id="public" 
-                value="to_public"
-                checked={formData.checked === "to_public"}
-                onChange={(event) => setFormData({...formData, public: event.target.value})}
+                checked={formData.public}
+                onChange={(event) => setFormData({...formData, public: event.target.checked})}
                 />
-              <label htmlFor="public">Pubblico</label>
-              <input 
-                type="radio" 
-                name="public" 
-                id="draft" 
-                value="to_draft"
-                checked={formData.checked === "to_draft"}
-                onChange={(event) => setFormData({...formData, public: event.target.value})}
-              />
-              <label htmlFor="draft">Bozza</label>
               
             </div>
             <button onSubmit={null}>Invia</button>
