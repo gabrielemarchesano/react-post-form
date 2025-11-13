@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 
 function App() {
@@ -14,6 +15,16 @@ function App() {
   function handleSubmit(event){
     event.preventDefault();
     console.log(formData);
+
+    axios.post(postEndpoint, formData, {
+      headers: { "Content-Type" : "application/json"}
+    })
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error.message);
+    })
   }
 
   return (
