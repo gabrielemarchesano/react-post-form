@@ -11,18 +11,20 @@ function App() {
     public: false
   });
 
-
+  function handleSubmit(event){
+    event.preventDefault();
+    console.log(formData);
+  }
 
   return (
 
     <>
-    {console.log(formData)}
       <div className="container">
         <header>
           <h1 className="text-center pt-5">C'è POST per te!</h1>
         </header>
         <main className="py-4">
-          <form>
+          <form onSubmit={handleSubmit}>
             <div>
               <label htmlFor="author">Autore</label>
               <input 
@@ -62,7 +64,7 @@ function App() {
                 />
               
             </div>
-            <button onSubmit={null}>Invia</button>
+            <button>Invia</button>
           </form>
         </main>
       </div>
