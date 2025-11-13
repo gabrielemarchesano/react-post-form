@@ -5,12 +5,14 @@ function App() {
 
   const postEndpoint = "https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts";
 
-  const [formData, setFormData] = useState({
+  const initialForm = {
     author: "",
     title: "",
     text: "",
     public: false
-  });
+  }
+  
+  const [formData, setFormData] = useState(initialForm);
 
   function handleSubmit(event){
     event.preventDefault();
@@ -21,6 +23,7 @@ function App() {
     })
     .then(response => {
       console.log(response);
+      setFormData(initialForm);
     })
     .catch(error => {
       console.log(error.message);
